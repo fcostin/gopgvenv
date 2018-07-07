@@ -39,12 +39,30 @@ dev notes
 *	mimic the basic debian `pg_virtualenv` interface or the `pifpaf` interface: `venv options -- subcommand`
 *	dev in linux first
 
+### what basic capabilities do we need?
+
+*   printing to stdout [OK]
+*   launching sub processes [OK]
+*   capturing sub process stdout [OK]
+*   creating temporary directories [OK]
+*   deleting temporary directories [OK]
+*   capturing sub process stderr [OK]
+*   logging in some reasonable way [SORTOF]
+*   initdb [OK]
+*   reading sub process exit codes
+*   keeping hold of a sub process handle while we do something else
+*   sending signals to sub processes
+*   getting and setting env vars
+*   printing to stderr
+*   controlling our exit code
+*   command line arg parsing
+*   maybe trapping signals? e.g. SIGINT SIGTERM
 
 ### under the hood, do everything by exec-ing:
 
 *	`pg_config --bindir`
-*	`pg_ctl`:
 *	`pg_isready (if necessary)`
+*	`pg_ctl`:
 
 ```
 pg_ctl initdb [-s] [-D datadir] [-o initdb-options]
