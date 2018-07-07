@@ -16,11 +16,6 @@ business case
 
 na. hobby project not product.
 
-license
--------
-
-bsd
-
 hidden conspiracy
 -----------------
 
@@ -76,10 +71,4 @@ pg_ctl kill signal_name process_id
 
 *	can get windows dev VM from microsoft and use appveyor for CI
 *	https://github.com/golang/go/blob/master/src/syscall/exec_windows.go
-
-prior art
----------
-
-*	[debian pg_virtualenv](https://manpages.debian.org/jessie/postgresql-common/pg_virtualenv.1.en.html)
-*	[jd/pifpaf](https://github.com/jd/pifpaf)
 
