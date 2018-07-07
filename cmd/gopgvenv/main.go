@@ -112,13 +112,13 @@ func main() {
 
 	fmt.Println("postgresOptions=", postgresOptions)
 	subprocess(pgctl, []string{"start", "-w", "--log", pgLogPath, "-o", postgresOptions, "-D", pgDataDir})
+	defer func() {
+		subprocess(pgctl, []string{"stop", "-D", pgDataDir})
+	}()
 
 	pgurl := fmt.Sprintf("postgresql://localhost:%d/%s", port, pgdatabase)
 	os.Setenv("PGURL", pgurl)
 
 	fmt.Println(subprocess("sh", []string{"-c", fmtOptionString("psql", "--dbname", "$PGURL", "-c", "\"select now();\"")}))
 
-	defer func() {
-		subprocess(pgctl, []string{"stop", "-D", pgDataDir})
-	}()
 }
