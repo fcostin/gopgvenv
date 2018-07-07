@@ -119,6 +119,20 @@ func main() {
 	pgurl := fmt.Sprintf("postgresql://localhost:%d/%s", port, pgdatabase)
 	os.Setenv("PGURL", pgurl)
 
-	fmt.Println(subprocess("sh", []string{"-c", fmtOptionString("psql", "--dbname", "$PGURL", "-c", "\"select now();\"")}))
+	userCommand := os.Args[1:]
+	if len(userCommand) == 0 {
+		panic("no command to run was given.")
+	}
 
+	userBin := userCommand[0]
+	userArgs := userCommand[1:]
+	// TODO: don't buffer user stdout and stderr
+	// TODO: get exit code of user command
+	fmt.Println(subprocess(userBin, userArgs))
+
+	// TODO: define convention for gopvvenv exit code. for example:
+	// 0 everything in order
+	// 1 internal error
+	// 2 user command error
+	// 3 postgres-related environmental error
 }
