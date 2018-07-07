@@ -1,0 +1,23 @@
+sudo: false
+
+language: go
+
+go:
+  - "1.10.x"
+
+git:
+  depth: 1
+
+notifications:
+  email: false
+
+addons:
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+
+
+script:
+  - make ./build/gopgvenv
+  - ./build/gopgvenv sh -c "psql --dbname \$PGURL -c 'select now();'"
