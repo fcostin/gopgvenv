@@ -1,6 +1,8 @@
 package main
 
 import "fmt"
+import "io/ioutil"
+import "os"
 import "os/exec"
 import "strings"
 
@@ -16,4 +18,12 @@ func getPGBinDir() string {
 func main() {
 	pgBinDir := getPGBinDir()
 	fmt.Println("pg_bindir=", pgBinDir)
+	workspace, err := ioutil.TempDir("", "gopgvenv_")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("workspace=", workspace)
+	defer func() {
+		os.RemoveAll(workspace)
+	}()
 }
