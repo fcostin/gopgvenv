@@ -24,6 +24,9 @@ func main() {
 	}
 	fmt.Println("workspace=", workspace)
 	defer func() {
-		os.RemoveAll(workspace)
+		err = os.RemoveAll(workspace)
+		if err != nil {
+			panic(err)
+		}
 	}()
 }
