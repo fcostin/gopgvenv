@@ -1,7 +1,8 @@
 gopgvenv
 ========
 
-![travis-build-status](https://travis-ci.org/fcostin/gopgvenv.svg?branch=master)
+[![travis-ci build status](https://travis-ci.org/fcostin/gopgvenv.svg?branch=master)](https://travis-ci.org/fcostin/gopgvenv)
+[![go report card](https://goreportcard.com/badge/github.com/fcostin/gopgvenv)](https://goreportcard.com/report/github.com/fcostin/gopgvenv)
 
 
 `gopgvenv` is a command-line tool to provision disposable PostgreSQL DB environments.
