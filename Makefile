@@ -1,8 +1,11 @@
 
-default:	build/gopgvenv
+default:	test
 
 fmt:
 	go fmt ./...
+
+test:	build/gopgvenv
+	./$<
 
 build/gopgvenv:	cmd/gopgvenv/main.go
 	go build -o $@ ./...
@@ -10,4 +13,4 @@ build/gopgvenv:	cmd/gopgvenv/main.go
 clean:
 	rm -rf ./build
 
-.PHONY:	clean default fmt
+.PHONY:	clean default fmt test
