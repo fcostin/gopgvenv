@@ -1,0 +1,26 @@
+version: "{build}"
+
+platform: x64
+
+clone_folder: c:\gopath\src\github.com\fcostin\gopgvenv
+
+environment:
+  GOPATH: c:\gopath
+  GOARCH: amd64
+
+install:
+  - set PATH=C:\Program Files\PostgreSQL\9.6\bin\;%PATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - echo %PATH%
+  - echo %GOPATH%
+  - go version
+  - go env
+  - pg_config
+
+build_script:
+  - go build -o build\gopgvenv.exe .\...
+
+deploy: false
+
+test_script:
+  - 'build\gopgvenv.exe psql --dbname %%%%PGURL%%%% -c "select now();"'
