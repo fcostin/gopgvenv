@@ -20,4 +20,4 @@ addons:
 
 script:
   - make ./build/gopgvenv
-  - ./build/gopgvenv sh -c "psql --dbname \$PGURL -c 'select now();'"
+  - ./build/gopgvenv "psql --dbname=\$PGURL -c 'select now();'"
